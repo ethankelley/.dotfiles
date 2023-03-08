@@ -27,9 +27,6 @@ antigen bundle colored-man-pages
 antigen bundle tmux
 antigen bundle zsh-interactive-cd
 
-# Better vi mode plugin
-antigen bundle jeffreytse/zsh-vi-mode
-
 # Theme
 antigen theme robbyrussell
 
