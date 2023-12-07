@@ -1,4 +1,3 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -24,8 +23,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle archlinux
 antigen bundle cabal
 antigen bundle colored-man-pages
-antigen bundle tmux
-antigen bundle zsh-interactive-cd
+#antigen bundle zsh-interactive-cd
 
 # Theme
 antigen theme robbyrussell
@@ -35,3 +33,4 @@ antigen apply
 alias xmreset="~/scripts/xmreset.sh"
 alias ra="ranger"
 alias vi="vim"
+alias nixos="sudoedit /etc/nixos/configuration.nix"
