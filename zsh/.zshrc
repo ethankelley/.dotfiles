@@ -26,7 +26,7 @@ antigen bundle colored-man-pages
 #antigen bundle zsh-interactive-cd
 
 # Theme
-antigen theme robbyrussell
+antigen theme agnoster
 
 antigen apply
 

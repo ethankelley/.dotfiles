@@ -2,6 +2,9 @@
 { config, pkgs, ... }:
 
 {
+  #enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -17,9 +20,9 @@
   #environment variables
   environment = {
     variables.EDITOR = "vim";
-    
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
+      #WLR_RENDERER = "vulkan";
       NIXOS_OZONE_WL = "1";  
     };
   };
@@ -68,7 +71,16 @@
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
+      #forceFullCompositionPipeline = true;
     };
+  };
+  
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
   };
 
   #xserver settings
@@ -77,7 +89,7 @@
     enable = true;
     #kde and sddm
     displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = false;
+    desktopManager.plasma5.enable = true;
     #keymap
     layout = "us";
     xkbVariant = "";
@@ -98,7 +110,7 @@
     jack.enable = true;
     #media-session.enable = true;
   };
-
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ethan = {
     isNormalUser = true;
@@ -107,6 +119,9 @@
     useDefaultShell = true;
     packages = with pkgs; [
       firefox
+      chromium
+      mindustry-wayland
+      steam
     ];
   };
   
@@ -132,6 +147,9 @@
     git
     fzf
     stow
+    ranger
+    tree
+    parted
   ];
 
   system.stateVersion = "23.11"; # Did you read the comment?

@@ -7,27 +7,12 @@ syntax on
 " Plugins
 filetype plugin indent on
 
-call plug#begin()
-
-Plug 'preservim/nerdtree'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh'
-    \ }
-
-call plug#end()
+autocmd Filetype nix setlocal ts=2 sw=2 expandtab
 
 " Leader key : spacebar
 noremap <SPACE> <Nop>
 let mapleader = "\<SPACE>"
- 
+
 " Security
 set modelines=0
 
@@ -77,7 +62,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set showmatch 
+set showmatch
 
 " Formatting
 map <leader>q gqip
@@ -91,15 +76,3 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " reload vim config
 map <leader>] :source .vimrc<CR>
-
-" -------- EXTENSION SETTINGS ---------
-
-" theme settings
-set bg=dark
-let g:gruvbox_contrast_dark = 'soft'
-colorscheme gruvbox
-hi Normal guibg=NONE ctermbg=NONE
-
-" nerdtree settings
-noremap <leader>n :NERDTreeToggle<CR>
-noremap <leader>m :NERDTreeFind<CR>
